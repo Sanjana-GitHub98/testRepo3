@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Event template" >
+    <aura:attribute name="BookDataLst" type="Booking_Table__c[]"/>
+    <aura:attribute name="LastIndx" type="String"/>
+</aura:event>

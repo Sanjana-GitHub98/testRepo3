@@ -1,0 +1,116 @@
+<template>
+<div class="boarder">
+<template if:true={contacts.data}>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <template for:each={contacts.data} for:item="contact" for:index="index">
+                <tr key={contact.Id}>
+                    <td>
+                        <lightning-input type="checkbox" key={contact.Id}  data-index={index} onchange={getSelCheckDtls}  value={contact.Id}></lightning-input>
+                            
+                    </td>
+                    <td key={contact.Id} >{contact.Name} </td>
+                    </tr>  
+            </template>
+        </tbody>
+    </table>
+    <table>
+        <thead></thead>
+</table>
+
+</template>
+<button onclick={getBookDtls} > Show Book Table</button>
+<!-- <template if:true={booktbl.data}>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>BookingName</th>
+                <th></th> 
+            </tr>
+        </thead>
+
+        
+        <tbody>
+            <template for:each={booktbl.data} for:item="booktbl" for:index="bktblindex">
+                <tr key={booktbl.Id}>
+                    <td>
+                        <lightning-input type="checkbox" key={booktbl.Id}  data-index={bktblindex} value={booktbl.Id}></lightning-input>
+                            
+                    </td>
+                    <td key={booktbl.Id}>{booktbl.Name} </td>
+                    <td key={booktbl.Id}>{booktbl.Amount__c}</td>
+                    </tr>  
+            </template>
+        </tbody>
+    </table>
+</template>-->
+
+<template if:true={Bktbldata.data}>
+        <table>
+                <thead>
+                    <tr>
+                       
+                        <th>BookingName</th>
+                        <th>Description</th>
+                        <th>Is Booking</th>
+                        <th>Amount</th> 
+                        <th>GrossAmount</th>
+                    </tr>
+                </thead>
+     
+                <tbody>
+                        <template for:each={Bktbldata.data} for:item="m1" for:index="currentIndex">
+                        <tr key={Bktbldata.Id}>
+                           
+                            <td>
+                                <lightning-textarea name="Name" label="" value={m1.Name} ></lightning-textarea>   
+                                   
+                             </td>
+                          
+                             <td > <lightning-textarea name="Name" label="" value={m1.TextDescription__c} ></lightning-textarea></td>
+                            
+                             <td>
+                                    <lightning-input type="checkbox" checked={m1.Is_Booking__c} data-index={currentIndex} onchange={getcheckIsBookAmt}></lightning-input>
+                                
+                                </td> 
+                                
+                             <td><lightning-textarea name="Name" label="" value={m1.Amount__c}></lightning-textarea>
+                            </td>
+                            <td><lightning-textarea name="Name" label="" value={m1.Gross_Amount__c}></lightning-textarea></td>
+                            </tr>  
+                    </template>
+                </tbody>
+            </table>      
+                    
+</template>
+</div>
+<!--<div  class="boarder">
+<template if:true={Bktbldata.data}>
+ <table>
+     <thead>
+         <tr>
+             <th></th>
+             <th>Select vechile:</th>
+         </tr>
+     </thead> 
+     <tbody>
+         <tr>
+             <td></td>
+             <td></td>
+         </tr>
+     </tbody>
+ </table>
+
+</template>
+
+</div>-->
+</template>

@@ -1,0 +1,17 @@
+<apex:page sidebar="false" showheader="false">
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <apex:includeLightning />
+    <div id="lightning"/>
+    <script>
+        $Lightning.use("c:DynamicChartApp", function() 
+        {
+            $Lightning.createComponent("wnc:OuterDynamicChart",
+              { label : "" },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              });
+        });
+    </script>
+
+</apex:page>

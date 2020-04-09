@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:attribute name="btnDisplay" type="Boolean" default="true"/>
+    <aura:attribute name="clicked" type="Boolean" default="false"/>
+    <aura:if isTrue="{!v.btnDisplay}">
+	<lightning:button aura:id="BtnId" variant="brand" label="Open" title="Open" onclick="{!c.openCmp}" />
+    </aura:if>
+        <aura:if isTrue="{!v.clicked}">
+        <c:CardLayoutAnalytics/>
+    </aura:if>
+                                                   
+</aura:component>

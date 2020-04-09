@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+   
+ <aura:attribute name="ContIdFrmCntr" type="String"/>
+     <aura:attribute name="recordId" type="Id" />
+ 
+ 
+     <aura:handler event="c:ShowContactEvt" action="{!c.ContDataFromComp}"/>
+    <c:ContactComponent AccId="{!v.recordId}"/>
+    <c:BookTableComponent ContIdFromContactSel="{!v.ContIdFrmCntr}" />
+</aura:component>

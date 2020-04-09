@@ -1,0 +1,98 @@
+<aura:component controller="ContactController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:attribute name="bookedList" type="Booking_Table__c"/>
+     <aura:attribute name="bookLstLastIndex" type="String"/>
+    <aura:attribute name="ContIdFromContactSel" type="String"/>
+    <aura:handler name="SaveBookDataEvt" event="c:SaveBookDataEvt" action="{!c.bookDataAftPop}"/>
+      
+     <!--<div style="margin-left: 50%;margin-top: 13px;">-->
+        <!--<button class="slds-button slds-button_brand" onclick="{!c.bookDetail}" >AddBooking</button>
+         <c:AdDBookingPOPUp getbookedList="{!v.bookedList}" rowIndex="{!index}"/>
+         <lightning:button class="slds-button slds-button_brand" onclick="{!c.bookDetail}" label="AddBooking"/>-->
+    
+   <!-- <div class="demo-only" style="height: 4rem;">
+<div class="slds-notify_container slds-is-relative">
+<div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+<span class="slds-assistive-text">error</span>
+<span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+<svg class="slds-icon slds-icon_small" aria-hidden="true">
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error" />
+</svg>
+</span>
+<div class="slds-notify__content">
+<h2 class="slds-text-heading_small ">Select atleast one Record</h2>
+</div>
+<div class="slds-notify__close">
+<button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close" />
+</svg>
+<span class="slds-assistive-text">Close</span>
+</button>
+</div>
+</div>
+</div>
+</div>-->
+    <p>-------------------------------------------
+    </p>
+    <div style="margin-left: 50%;margin-top: 10px;">          
+     <button class="slds-button slds-button_brand" onclick="{!c.bookDetail}" >BookingDetail</button>
+        <c:AdDBookingPOPUp getbookedList="{!v.bookedList}" LstIndex="{!v.bookLstLastIndex}" ContSelIdFromBookTbl="{!v.ContIdFromContactSel}"/>  
+         
+    </div>
+    <div>
+    </div>
+    <div>
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer"> 
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <div class="slds-truncate">S.No</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="TextDescription">TextDescription</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Amount">Amount</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="IsBooking">Is Booking</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="GrossAmount">Gross Amount</div>
+                </th>
+            </tr>
+        </thead>   
+        <tbody>
+             <aura:iteration items="{!v.bookedList}" var="obj" indexVar="index">
+             <tr class="slds-text-title_caps">
+        <td> 
+            <ui:outputText class="{!index+'slds-input'}" value="{!index+1}"></ui:outputText>
+        </td>
+        <td>
+            <ui:outputText value="{!obj.TextDescription__c}"/>
+        </td>
+        <td>
+            <ui:outputText aura:id="amount" value="{!obj.Amount__c}"/> 
+            
+        </td>
+        <td>
+            <ui:inputCheckbox aura:id="checkbox"  value="{!obj.Is_Booking__c}" disabled="true"/>
+        </td>
+        <td>
+            <ui:outputText aura:id="checkResult" value="{!obj.Gross_Amount__c}" />
+            
+        </td>
+       
+    </tr>
+                 </aura:iteration>
+           <!--Iterate the child Component for display Table rows 
+               with pass the List Item Index for track the Every child Component 
+               and pass each List Contact Instance -->         
+              
+        </tbody>
+    </table>
+    </div>
+    
+     
+    
+</aura:component>

@@ -1,0 +1,15 @@
+<aura:component >
+    <aura:attribute name="buttonDisplay" type="Integer" default="0"/>
+    <ltng:require scripts='{!$Resource.jquerymin}' afterScriptsLoaded="{!c.ScriptLoad}" />
+    <div id="page-wrap">
+        <div class="sidebar-box black">
+            <p>Malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+            <p class="read-more" style="{!v.buttonDisplay != 0 ? 'display:none' : 'display:block'}" ><a href="#" class="button" onclick="{!c.displayLessWhenMoreClicked}">Read More</a></p>
+            <p class="read-less sidebar-lessbox"  style="{!v.buttonDisplay != 0 ? 'display:block' : 'display:none'}" ><a href="#" class="buttonless" >Read Less</a></p>
+           
+            
+            
+        </div>
+        
+    </div>
+</aura:component>

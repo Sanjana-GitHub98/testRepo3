@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:handler event="c:ShowContactEvt" action="{!c.ContDataFromComp}"/>
+   <aura:handler event="c:TK3BookLstEvent" action="{!c.BookDataFromComp}"/>
+   <aura:attribute name="BookLstMain" type="Booking_Table__c[]"/>
+    <aura:attribute name="ContIdFrmCntr" type="String"/>
+    <aura:attribute name="LstIndxMain" type="String"/>
+    
+    <c:ContactComponent/>
+    <c:TK3BookTable ContIdFromContactSel="{!v.ContIdFrmCntr}" />
+    <c:TK3AddBookData BookLstFromContr="{!v.BookLstMain}" LstIndex="{!v.LstIndxMain}" ContSelIdFromBookTbl="{!v.ContIdFrmCntr}"/>
+</aura:component>

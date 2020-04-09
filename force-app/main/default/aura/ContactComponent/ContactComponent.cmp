@@ -1,0 +1,51 @@
+<aura:component controller="ContactController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+  <aura:attribute name="contactList" type="ContactController.ContactWrapper[]"/>
+    <aura:attribute name="bookTableList" type="Booking_Table__c"/>
+     <aura:attribute name="ContIdToBookTbl" type="String"/>
+     
+    <aura:attribute name="AccId" type="Id"/>
+    <aura:registerEvent name="ShowContOnEvent" type="c:ShowContactEvt"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.displayContact}"/>
+    <div>
+ <p>
+        
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-truncate" title="Contact">Contact</div>
+                    </th>
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-truncate" title="Select">Select</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.contactList}" var="obj">
+                    <tr class="slds-hint-parent">
+                        <td data-label="Contact">
+                            <div class="slds-truncate" title="{!obj.cont.Name}">{!obj.cont.Name}</div>
+                        </td>
+                        <td data-label="selected">
+                            <div class="slds-truncate" title="{!obj.isConselect}">
+                                <ui:inputRadio text="{!obj.cont.Id}" value="{!obj.isConselect}" name="radio"  change="{!c.contactId}"/>
+                                
+                                
+                            </div>
+                        </td>
+                        
+                    </tr>
+                </aura:iteration>
+                
+            </tbody>
+        </table>
+    </p>  
+        
+          
+</div>
+    <!--<div>
+        <c:BookTableComponent ContIdFromContactSel="{!v.ContIdToBookTbl}" />
+    </div>-->
+   
+</aura:component>

@@ -1,0 +1,106 @@
+.THIS .body {
+    font: 14px/1.5 Georgia, serif; color: white; background: black; 
+}
+
+.THIS .article{ display: block; }
+.THIS .aside{ display: block; }
+.THIS .figure{ display: block; }
+.THIS .footer{ display: block; }
+.THIS .header{ display: block; }
+.THIS .hgroup{ display: block; }
+.THIS .menu{ display: block; }
+.THIS .nav{ display: block; }
+.THIS .section { display: block; }
+
+.THIS .page-wrap { width: 960px; margin: 80px auto; }
+
+.THIS .h1 { box-shadow: 0 0 20px black; }
+.THIS .a {
+    color: rgb(0, 109, 204);;
+    text-decoration: none;
+    transition: color .1s linear;
+}
+.THIS .button {
+   
+    padding: 5px 10px;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    font-size: 14px;
+    font-family: Georgia,serif;
+    text-decoration: none;
+    }
+
+.THIS .p { margin: 0 0 15px 0; }
+.THIS .sidebar-box .read-less{
+    float: left; 
+    width: 250px;
+    margin: 0 20px 0 0;
+}
+
+.THIS .sidebar-box { 
+    float: left; 
+    width: 250px;
+    margin: 0 20px 0 0;
+}
+/*below code enables Read more*/
+.THIS .sidebar-box {
+    max-height: 120px;
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+}
+.THIS .sidebar-box .read-more { 
+     position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 47px;
+    text-align: -webkit-left;
+    margin: 0;
+    padding: 31px 0 0px 0px;
+     /* "transparent" only works here because == rgba(0,0,0,0) */ 
+   background-image: -moz-linear-gradient(top, transparent, black);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, transparent),color-stop(1, rgb(220,220,220)));  
+}
+
+.THIS .gray {
+    background-color: #444;
+    background-color: rgb(89,89,89);
+}
+.THIS .red {
+    background-color: red;
+}
+.THIS .red .read-more { 
+    /* transparent doesn't work in this context, must use RGBa for both */
+    background-image: -moz-linear-gradient(top, rgba(255,0,0,0), rgba(255,0,0,100));
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgba(255,0,0,0)),color-stop(1, rgba(255,0,0,100)));
+}
+
+/*see less Code */
+.THIS .sidebar-box {
+    max-height: 120px;
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+}
+.THIS .sidebar-box .read-less { 
+     position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 47px;
+    text-align: top;
+    margin: 0;
+    padding: 21px 0 0 0;
+   
+   background-image: -moz-linear-gradient(top, transparent, black);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, transparent),color-stop(1,rgb(220,220,220)));  
+}
+
+.THIS .buttonless {
+   
+    padding: 5px 10px;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    font-size: 14px;
+    font-family: Georgia,serif;
+    text-decoration: none;
+    }

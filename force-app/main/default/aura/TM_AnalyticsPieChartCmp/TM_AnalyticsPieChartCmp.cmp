@@ -1,0 +1,15 @@
+<aura:component controller="TM_AnalyticsChartsCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!-- <ltng:require scripts="{!join(',',$Resource.ChartJs + '/js/Highcharts.js',
+                           $Resource.ChartJs+ '/js/highchart3d.js',
+                           $Resource.ChartJs+ '/js/Highchartsexport.js'
+                           
+                           )}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />-->
+    <!--$Resource.RD_hierarchytree+'/rd_tree_resources/jquery-3.3.1.min.js'-->
+   
+    <aura:attribute name="chartType" type="string"/>
+    <aura:attribute name="chartTitle" type="string" default="OBLIGATION BY SETASIDES"/>
+    <aura:attribute name="chartSubTitle" type="string" default=""/>
+    <aura:attribute name="data" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div aura:id="chart" style="height: 400px"></div>
+</aura:component>

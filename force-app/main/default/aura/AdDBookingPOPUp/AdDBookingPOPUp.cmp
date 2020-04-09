@@ -1,0 +1,137 @@
+<aura:component controller="ContactController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="getbookedList" type="Booking_Table__c"/>
+    <aura:attribute name="addBookInstance" type="Booking_Table__c"/>
+     <aura:attribute name="LstIndex" type="String"/>
+    <aura:registerEvent name="SaveBookDataEvt" type="c:SaveBookDataEvt"/>   
+    
+    <aura:attribute name="ContSelIdFromBookTbl" type="String"/>
+    <!--<aura:handler name="init" value="{!this}" action="{!c.addNewRow}"/>
+    Model Code Start-->
+    
+    <!--Use "slds-m-around_xx-large" class to add standard X-Large padding to the component--> 
+     
+    <lightning:button variant="brand" label="Add Data" title="AddData" onclick="{!c.openModel }" />
+       
+    <div class="slds-m-around_xx-large">
+       
+        <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+        <aura:if isTrue="{!v.isOpen}">
+            
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }" alternativeText="close"
+                                              variant="bare-inverse" class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Booking </h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div>
+                            <div style="margin-left: 60%;margin-top: 3px;">
+           <!-- <lightning:button variant="brand" label="Add" title="Add" onclick="{!c.addNewRow }" />-->
+            <lightning:button variant="brand" label="Save" title="Save" onclick="{!c.saveData }" />
+           
+        </div>
+                            <p><table class="slds-table slds-table_bordered slds-table_cell-buffer" id="showDetailTable"> 
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="TextDescription">TextDescription</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Amount" required="true">Amount</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="IsBooking">Is Booking</div>
+                                        </th>
+                                       </tr>
+                                </thead>   
+                                <tbody>
+                                     <aura:iteration items="{!v.getbookedList}" var="obj" indexVar="index">
+                                  
+                                        <aura:if isTrue="{!v.LstIndex== index}">
+                                           <tr class="slds-text-title_caps">
+                                          
+                                            <td>
+                                                <ui:inputText class="slds-input" value="{!obj.TextDescription__c}"/>
+                                                
+                                            </td>
+                                            <td>
+                                                <lightning:input type="number" value="{!obj.Amount__c}" required="true" />
+                                                <!--<ui:inputCurrency  class="slds-input" value="{!obj.Amount__c}" required="true" />--> 
+                                                <!--<ui:inputText class="{!index+' slds-input inputSize'}"  aura:id="amount" label="{!index}" value="{!obj.Amount__c}" change="{!c.onChange}" /> -->
+                                                
+                                            </td>
+                                            <td>
+                                                <ui:inputCheckbox class="slds-input"  aura:id="checkbox" value="{!obj.Is_Booking__c}" />
+                                            </td>
+           
+                                        </tr>
+                                   <!-- <aura:set attribute="else">
+                                <tr class="slds-text-title_caps">
+                                           <td> 
+                                                <ui:outputText class="slds-input" value="{!index+1}"></ui:outputText>
+                                                
+                                            </td>
+                                            <td>
+                                                <ui:inputText class="slds-input" value="{!obj.TextDescription__c}"/>
+                                                
+                                            </td>
+                                            <td>
+                                                <ui:inputCurrency  class="{!index+' slds-input inputSize'}" value="{!obj.Amount__c}" change="{!c.onChange}" /> 
+                                                <ui:inputText aura:id="amount" label="{!index}" value="{!obj.Amount__c}" change="{!c.onChange}" /> 
+                                                
+                                            </td>
+                                            <td>
+                                                <ui:inputCheckbox class="{!index+'slds-input'}"  aura:id="checkbox" value="{!obj.Is_Booking__c}" text="{!index}" change="{!c.onCheck}"/>
+                                            </td>
+                                            <td>
+                                                <ui:outputText aura:id="grossAmt" value="{!obj.Gross_Amount__c}" />
+                                                
+                                            </td>
+                                            <td>
+                                                <td>
+                                                    <lightning:button class="{!index+'slds-button slds-button_destructive'}" label="Delete" onclick="{!c.removeDeletedRow}" value="{!index}" />
+                                                    
+                                                </td>
+                                                
+                                            </td> 
+                                        </tr>
+                                    </aura:set> -->
+                        </aura:if>
+                                       
+                                    </aura:iteration>
+                                    
+                                    
+                                </tbody>
+                                </table></p> 
+                             <div style="margin-left: 80%;margin-top: 1px;">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <!-- <footer class="slds-modal__footer">
+                                                        <lightning:button variant="neutral" 
+                                                                          label="Cancel"
+                                                                          title="Cancel"
+                                                                          onclick="{! c.closeModel }"                                                                            
+                                                                              />
+                                                        <lightning:button variant="brand" 
+                                                                          label="Like and Close"
+                                                                          title="Like and Close"
+                                                                          onclick="{! c.likenClose }"/>
+                                                    </footer>-->
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+    </div>
+    <!-- Model Code End-->
+</aura:component>

@@ -1,0 +1,9 @@
+<apex:page standardController="Account">
+    <apex:form >
+       <apex:pageblock >
+            <apex:pageBlockTable value="{!id}" var="rec">
+               
+               </apex:pageBlockTable>       
+                 </apex:pageblock>
+            </apex:form>
+</apex:page>

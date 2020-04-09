@@ -1,0 +1,41 @@
+.THIS .btn {
+    color: rgb(0, 109, 204);
+    /* background: #000; */
+    /* border-radius: 1.5em; */
+    /* left: 91%; */
+    /* padding: 1em; */
+    /* text-decoration: none; */
+    /* width: 40%; */
+    padding-right: 43%;
+}
+/*.THIS .show, .THIS .hide {
+      /* position: absolute; 
+    /* bottom: -1em; 
+    /* z-index: 100; 
+    text-align: center;
+      margin-left: 44%;
+}*/
+
+.THIS .hide {display: none;}
+
+.THIS .panel:target {
+    max-height: 2000px; 
+}
+/*.THIS .panel:target ~ .fade {
+  margin-top: 0;
+}*/
+.THIS .panel:target ~ .hide {display: block;}
+
+.THIS .panel:target ~ .show {display: none;}
+.THIS .panel {
+  width: 70%;
+  max-height: 88px;
+  overflow: hidden;
+ 
+}
+.THIS .fade {
+            background-color: rgba(175, 168, 168, 0.33);
+    height: 17px;
+    margin-top: -6px;
+    /* position: relative; */
+}

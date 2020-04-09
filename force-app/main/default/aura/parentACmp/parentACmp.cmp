@@ -1,0 +1,4 @@
+<aura:component >
+    <c:childACmp aura:id="childCmp"/>
+    <lightning:button name="ParentBtn" label="ParentBtn" variant="brand" onclick="{!c.handleParentAclick}"/>
+</aura:component>

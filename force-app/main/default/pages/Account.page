@@ -1,0 +1,78 @@
+<apex:page Controller="AccWrapClass">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"> </script>
+    <script>
+        var j$ = jQuery.noConflict();
+    j$(document).ready(function(){
+        
+    });
+    
+    function contactBtnShow(showContactId)
+    {
+        
+        var selectedCheckBox = j$('input:checkbox').is(':checked');
+        
+        if(selectedCheckBox == '')
+        {
+            alert('Please Select atleast one Account');
+        }
+    }
+    
+    
+     function selectAllCheckboxes(obj,receivedInputID){
+        var inputCheckBox = document.getElementsByTagName("input");
+        for(var i=0; i<inputCheckBox.length; i++){
+            if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+                inputCheckBox[i].checked = obj.checked;
+            }
+        }
+    }
+     function selectAllContactCheckboxes(obj,receivedInputID){
+        var inputCheckBox = document.getElementsByTagName("input");
+        for(var j=0; j<inputCheckBox.length; j++)
+        {
+            if(inputCheckBox[j].id.indexOf(receivedInputID)!=-1){
+                inputCheckBox[j].checked = obj.checked;
+            }
+        }
+    }
+    </script>
+   
+  <apex:form >
+        <apex:pageBlock title="Accounts">
+            <apex:pageMessages />
+            <apex:commandButton onclick="contactBtnShow('{!$Component.showContactId}')" value="Show Contact" action="{!viewContact}" id="showContactId"/>
+                
+            
+            <apex:pageBlockTable value="{!wrapList}" var="wrap" id="accBlock"> 
+                <apex:column >
+                    <apex:facet name="header">
+                            <apex:inputCheckbox onclick="selectAllCheckboxes(this,'input')"/>
+                        </apex:facet>
+                    <apex:inputCheckbox value="{!wrap.isCheck}" id="input"/>
+                </apex:column>
+                <apex:column value="{!wrap.acc.Name}"/>
+                <apex:column value="{!wrap.acc.AccountNumber}"/>
+                <apex:column value="{!wrap.acc.Owner.Name}"/>     
+            </apex:pageBlockTable>
+           <apex:outputPanel id="selectedContactsOutputPanel" rendered="{!contactWrapList.size>0}">
+            <apex:pageBlock title="Contact">
+                
+                <apex:pageBlockTable value="{!contactWrapList}" var="conWrap" id="contactBlock">        
+                    <apex:column >
+                         <apex:facet name="header">
+                            <apex:inputCheckbox onclick="selectAllContactCheckboxes(this,'inputcon')"/>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!conWrap.isCheck}" id="inputcon" />
+                    </apex:column>
+                    <apex:column value="{!conWrap.con.Name}"/>
+                    <apex:column value="{!conWrap.con.Phone}"/>
+                    <apex:column value="{!conWrap.con.Email}"/>      
+                </apex:pageBlockTable> 
+                <apex:commandButton value="Send Email" action="{!SendEmail}" id="showId"/>
+           
+            </apex:pageBlock>
+            </apex:outputPanel>    
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,5 @@
+<aura:component >
+    <aura:method name="childA" action="{!c.handleChildA}">
+        <aura:attribute name="varString" type="String"/>
+    </aura:method>
+</aura:component>
